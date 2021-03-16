@@ -4,12 +4,12 @@
 <head>
     <script src='mines.js'></script>
     <script>
-        let mines = make_field()
+        let mines = new mine_field();
     </script>
 </head>
 
 <body>
-    <button onclick="pr()">Click</button>
+    <button onclick='console.log(mines.getcurrent())'>Click</button>
 
 </body>
 
