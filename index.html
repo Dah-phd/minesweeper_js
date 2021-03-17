@@ -3,14 +3,20 @@
 
 <head>
     <script src='mines.js'></script>
+    <script src='draw_field.js'></script>
     <script>
         let mines = new mine_field();
     </script>
 </head>
 
 <body>
-    <button onclick='console.log(mines.getcurrent())'>Click</button>
+    <script>
+        let grid = document.getElementById('field')
 
+    </script>
+    <canvas oncontextmenu="return false" id='field' height="640" width="1200"></canvas>
+    <button onclick="let d = new draw_mine('field', mines)">Canvas</button>
+    <button onclick='console.log(mines.getcurrent())'>Click</button>
 </body>
 
 </html>

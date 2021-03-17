@@ -51,32 +51,32 @@ class mine_field {
         }
         return now_field
     }
-    onlick(row, cell, limit = false) {
+    onclick(row, cell, limit = false) {
         if (this.alive) {
             if (this.field[row][cell][1] == 0 && this.field[row][cell][2] == 0) {
                 this.field[row][cell] = [this.field[row][cell][0], 1, 0];
                 if (this.field[row][cell][0] == 'M') {
                     this.boom()
                 } else if (this.field[row][cell][0] == 0) { this._massclick(row, cell) }
-            } else if (this.field[row, cell][1] == 1 && this.field[row][cell][0] != 0 && limit == false) {
+            } else if (this.field[row][cell][1] == 1 && this.field[row][cell][0] != 0 && limit == false) {
                 let locked = this._counter(row, cell, 2, 1);
                 if (locked == this.field[row][cell][0]) {
                     if (this._counter(row, cell, 1, 0) - locked > 0) {
-                        this._massclick(row, cell, false)
+                        this._massclick(row, cell, limit = true)
                     }
                 }
             }
         }
     }
     _massclick(row, cell, limit = false) {
-        if (row != 0) { this.onlick(row - 1, cell, limit) };
-        if (row != 15) { this.onclick(row + 1, square, limit) };
-        if (square != 0) { this.onclick(row, square - 1, limit) };
-        if (square != 29) { this.onclick(row, square + 1, limit) };
-        if (row != 0 && square != 0) { this.onclick(row - 1, square - 1, limit) };
-        if (row != 15 && square != 0) { this.onclick(row + 1, square - 1, limit) };
-        if (row != 0 && square != 29) { this.onclick(row - 1, square + 1, limit) };
-        if (row != 15 && square != 29) { this.onclick(row + 1, square + 1, limit) }
+        if (row != 0) { this.onclick(row - 1, cell, limit) };
+        if (row != 15) { this.onclick(row + 1, cell, limit) };
+        if (cell != 0) { this.onclick(row, cell - 1, limit) };
+        if (cell != 29) { this.onclick(row, cell + 1, limit) };
+        if (row != 0 && cell != 0) { this.onclick(row - 1, cell - 1, limit) };
+        if (row != 15 && cell != 0) { this.onclick(row + 1, cell - 1, limit) };
+        if (row != 0 && cell != 29) { this.onclick(row - 1, cell + 1, limit) };
+        if (row != 15 && cell != 29) { this.onclick(row + 1, cell + 1, limit) }
     }
 
     _make_field() {
